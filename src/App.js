@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
 import TodoList from './components/TodoList';
+import Modal from 'antd/lib/modal';
 
 function App() {
   return (
     <>
       <TodoList />
+      <Modal />
     </>
     // <div className="App">
     //   <header className="App-header">

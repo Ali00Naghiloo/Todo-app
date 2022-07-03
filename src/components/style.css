@@ -1,6 +1,6 @@
 @font-face {
     font-family: Dana;
-    src: url(../Assets/DanaPro10Wt/Dana-family/Dana-Bold.ttf);
+    src: url(../Assets/DanaPro10Wt/Dana-family/Dana-DemiBold.ttf);
 }
 
 body {
@@ -9,16 +9,16 @@ body {
     height: 100%;
 }
 
-.todo {
+.todo-form {
     width: 100%;
     height: 15%;
     display: flex;
     justify-content: center;
 }
 
-.todoinput {
-    width: 65vh;
-    height: 35px;
+.todo-input {
+    width: 75vh;
+    height: 40px;
     margin-left: 20px;
     margin-top: 40px;
     border: none;
@@ -28,7 +28,7 @@ body {
     border-radius: 5px;
 }
 
-.todopushbtn {
+.todo-pushbtn {
     width: 15vh;
     height: 35px;
     background-color: rgb(0, 206, 10);
@@ -38,7 +38,89 @@ body {
     margin-top: 40px;
 }
 
-.todolist {
+.todo-list {
+    margin-top: 40px;
     height: 90%;
     width: 100%;
+    display: felx;
+    justify-content: center;
+}
+
+.detail {
+    font-family: Dana;
+    color: #fff;
+    background-color: rgb(73, 73, 116);
+    border-radius: 15px 15px 0 0;
+    margin-left: 18%;
+    margin-right: 18%;
+    padding: 3px 0;
+}
+
+.detail-1 {
+    text-align: center;
+}
+
+.detail-2 {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 13px;
+}
+
+.todo-title-task {
+    margin-left: auto;
+    width: 50%;
+}
+.todo-title-time {
+    margin-left: 10%;
+}
+.todo-title-status {
+    margin-left: 7%;
+}
+
+.todo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    font-family: Dana;
+    margin: 3px 18%;
+    padding: 10px 10px;
+    background-color: rgb(152, 152, 255);
+    border-radius: 10px;
+}
+.todo-num {
+    font-size: 12px;
+    padding-left: 3px;
+}
+.todo-work {
+    margin-left: auto;
+    font-size: 12px;
+}
+.todo-time {
+    font-size: 12px;
+    margin-left: 5%;
+}
+.todo-status {
+    font-size: 12px;
+    margin-left: 3%;
+}
+
+select {
+    position: absolute;
+    left: -25px;
+    top: 0;
+    outline: none;
+    width: 20px;
+    border-radius: 15px;
+    height: 30px;
+    font-family: Dana;
+}
+
+.detail-btm {
+    width: 64%;
+    height: 50px;
+    background-color: rgb(73, 73, 116);
+    border-radius: 0 0 15px 15px;
+    margin-left: 18%;
+    margin-right: 18%;
 }
