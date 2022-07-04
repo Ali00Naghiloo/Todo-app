@@ -1,53 +1,91 @@
 import { useState } from "react";
 import "./style.css";
 import moment from "jalali-moment";
-import { Button, Modal } from "antd";
+import { Button, Modal, Popover } from "antd";
 import "antd/dist/antd.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import svg from "./modal";
 
 function TodoList() {
-  const [inputValue, setInputValue] = useState();
+  const [inputValue, setInputValue] = useState("");
   const [todos, setTodos] = useState([]);
-  const [status, setStatus] = useState("انجام نشده");
+  // const [status, setStatus] = useState("انجام نشده");
   const [isModalVisible, setIsModalVisible] = useState(false);
-
+  const [visible, setVisible] = useState(false);
   const m = moment().locale("fa").format("YYYY/MM/DD HH:mm:ss");
 
-  const value = (e) => {
-    return setInputValue(e.target.value);
+  const hide = () => {
+    setVisible(false);
+  };
+  const handleVisibleChange = (newVisible = true) => {
+    setVisible(newVisible);
+  };
+
+  const notify = () => {
+    toast.warn("لطفا فرم را پر کنید!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   const showModal = () => {
     setIsModalVisible(true);
   };
-
-  // const handleOk = () => {
-  //   setIsModalVisible(false);
-  //   todo.value = inputValue;
-  // };
-
+  const handleOk = (todo, e) => {
+    setTodos([...todos, todo.content = e]);
+    setIsModalVisible(false);
+  };
   const handleCancel = () => {
     setIsModalVisible(false);
   };
 
+  function handleStatus (todo) {
+    todo.status = "انجام شده"
+  }
+
   const todopush = () => {
-    const creatTodo = {
-      id: Math.random(),
-      cretedAt: m,
-      status: status,
-      content: inputValue,
-    };
-    setTodos([...todos, creatTodo]);
-    setInputValue("");
-    console.log(inputValue);
+    if (inputValue.length === 0) {
+      notify();
+    } else {
+      const creatTodo = {
+        id: Math.random(),
+        cretedAt: m,
+        status: "انجام نشده",
+        content: inputValue,
+      };
+      setTodos([...todos, creatTodo]);
+      setInputValue("");
+    }
   };
 
-  const deletetodo = () => {
-    console.log("hello");
-  };
+  const statusValue = (todo)=> {
+    if (todo.status === "انجام نشده") {
+      todo.status = "انجام نشده"
+    }else{
+      todo.status = "انجام شده"
+    }
+  } 
 
   return (
     <>
       <div>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={true}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -57,8 +95,8 @@ function TodoList() {
           <input
             className="todo-input"
             type="text"
-            onChange={value}
-            required
+            onChange={(e) => setInputValue(e.target.value)}
+            value={inputValue}
             placeholder="تسک مورد نظر را وارد کنید... "
           />
           <input
@@ -84,39 +122,33 @@ function TodoList() {
             <span className="todo-num">{index + 1}-</span>
             <span className="todo-work">{todo.content}</span>
             <span className="todo-time">{todo.cretedAt}</span>
-            <span className="todo-status">{todo.status}</span>
-            {/* <select name="hello" id="">
-              <option onClick={deletetodo} value="1">
-                حذف
-              </option>
-              <option value="2">ویرایش</option>
-              <option value="3">انجام شده</option>
-            </select> */}
-            <span onClick={showModal}>
-              <svg
-                aria-hidden="true"
-                height="16"
-                viewBox="0 0 16 16"
-                version="1.1"
-                width="16"
-                data-view-component="true"
-                class="octicon octicon-kebab-horizontal"
-              >
-                <path d="M8 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM1.5 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm13 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
-              </svg>
-            </span>
+            <span className="todo-status">{statusValue(todo)}</span>
+            <Popover
+              placement="left"
+              content={
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <Button onClick={hide}>حذف</Button>
+                  <Button onClick={showModal}>ویرایش</Button>
+                  <Button onClick={()=> handleStatus(todo)}>انجام شده</Button>
+                </div>
+              }
+              trigger="click"
+              visible={visible}
+              onVisibleChange={handleVisibleChange}
+            >
+              <Button className="todo-options">{svg}</Button>
+            </Popover>
             <Modal
-              title="Basic Modal"
+              okText="تایید"
               visible={isModalVisible}
-              onOk={(todo)=> {
-                setIsModalVisible(false);
-              }}
+              onOk={() => handleOk(todo)}
               onCancel={handleCancel}
             >
               <input
                 className="todo-input"
                 type="text"
-                value={todo.content}
+                defaultValue={todo.content}
+                onChange={(e) => handleOk(e.target.value)}
                 placeholder="تسک مورد نظر را وارد کنید... "
               />
             </Modal>

@@ -1,33 +1,14 @@
-import { Button, Modal } from 'antd';
-import { useState } from 'react';
-
-const Modal = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-  };
-
-  return (
-    <>
-      <Button type="primary" onClick={showModal}>
-        Open Modal
-      </Button>
-      <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Modal>
-    </>
-  );
-};
-
-export default Modal;
+const svg = (
+  <svg
+    aria-hidden="true"
+    height="16"
+    viewBox="0 0 16 16"
+    version="1.1"
+    width="13"
+    data-view-component="true"
+    className="octicon octicon-kebab-horizontal"
+  >
+    <path d="M8 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zM1.5 9a1.5 1.5 0 100-3 1.5 1.5 0 000 3zm13 0a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
+  </svg>
+);
+export default svg;

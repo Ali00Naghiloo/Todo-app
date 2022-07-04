@@ -3,6 +3,10 @@
     src: url(../Assets/DanaPro10Wt/Dana-family/Dana-DemiBold.ttf);
 }
 
+* {
+    font-family: Dana;
+}
+
 body {
     margin: 0;
     direction: rtl;
@@ -47,7 +51,6 @@ body {
 }
 
 .detail {
-    font-family: Dana;
     color: #fff;
     background-color: rgb(73, 73, 116);
     border-radius: 15px 15px 0 0;
@@ -104,16 +107,9 @@ body {
     font-size: 12px;
     margin-left: 3%;
 }
-
-select {
-    position: absolute;
-    left: -25px;
-    top: 0;
-    outline: none;
-    width: 20px;
+.todo-options {
+    height: 10px;
     border-radius: 15px;
-    height: 30px;
-    font-family: Dana;
 }
 
 .detail-btm {
