@@ -1,13 +1,11 @@
 import React from 'react';
 import './App.css';
 import TodoList from './components/TodoList';
-import Toast from './components/modal';
 
 function App() {
   return (
     <>
       <TodoList />
-      {/* <Toast /> */}
     </>
     // <div className="App">
     //   <header className="App-header">
