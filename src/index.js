@@ -1,4 +1,6 @@
 import React from 'react';
+import "antd/dist/antd.css";
+import "react-toastify/dist/ReactToastify.css";
 import { createRoot } from 'react-dom/client';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';

@@ -1,8 +1,14 @@
+// ** Redux Imports
+import rootReducer from './rootReduser'
 import { configureStore } from '@reduxjs/toolkit'
-import valueReducer from '../features/slice'
 
-export const store = configureStore({
-  reducer: {
-    value: valueReducer,
-  },
+const store = configureStore({
+  reducer: rootReducer,
+  middleware: getDefaultMiddleware => {
+    return getDefaultMiddleware({
+      serializableCheck: false
+    })
+  }
 })
+
+export { store }

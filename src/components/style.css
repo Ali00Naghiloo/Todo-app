@@ -50,6 +50,7 @@ body {
     justify-content: center;
 }
 
+
 .detail {
     color: #fff;
     background-color: rgb(73, 73, 116);
@@ -68,6 +69,7 @@ body {
     font-size: 13px;
 }
 
+
 .todo-title-task {
     margin-left: auto;
     width: 50%;
@@ -78,6 +80,7 @@ body {
 .todo-title-status {
     margin-left: 10%;
 }
+
 
 .todo {
     position: relative;
@@ -106,8 +109,8 @@ body {
     margin-left: 3%;
 }
 .todo-options {
-    height: 10px;
-    border-radius: 15px;
+    height: 50%;
+    border-radius: 12px;
 }
 
 .detail-btm {
